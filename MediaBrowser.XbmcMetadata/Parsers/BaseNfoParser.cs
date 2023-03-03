@@ -776,30 +776,6 @@ namespace MediaBrowser.XbmcMetadata.Parsers
                         break;
                     }
 
-                case "thumb":
-                    {
-                        FetchThumbNode(reader, itemResult, "thumb");
-                        break;
-                    }
-
-                case "fanart":
-                    {
-                        if (reader.IsEmptyElement)
-                        {
-                            reader.Read();
-                            break;
-                        }
-
-                        using var subtree = reader.ReadSubtree();
-                        if (!subtree.ReadToDescendant("thumb"))
-                        {
-                            break;
-                        }
-
-                        FetchThumbNode(subtree, itemResult, "fanart");
-                        break;
-                    }
-
                 default:
                     string readerName = reader.Name;
                     if (_validProviderIds.TryGetValue(readerName, out string? providerIdValue))

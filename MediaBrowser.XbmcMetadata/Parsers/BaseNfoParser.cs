@@ -222,27 +222,6 @@ namespace MediaBrowser.XbmcMetadata.Parsers
             {
                 item.SetProviderId(MetadataProvider.Imdb, imdbId.ToString());
             }
-
-            if (item is Movie)
-            {
-                if (ProviderIdParsers.TryFindTmdbMovieId(xml, out var tmdbId))
-                {
-                    item.SetProviderId(MetadataProvider.Tmdb, tmdbId.ToString());
-                }
-            }
-
-            if (item is Series)
-            {
-                if (ProviderIdParsers.TryFindTmdbSeriesId(xml, out var tmdbId))
-                {
-                    item.SetProviderId(MetadataProvider.Tmdb, tmdbId.ToString());
-                }
-
-                if (ProviderIdParsers.TryFindTvdbId(xml, out var tvdbId))
-                {
-                    item.SetProviderId(MetadataProvider.Tvdb, tvdbId.ToString());
-                }
-            }
         }
 
         protected virtual void FetchDataFromXmlNode(XmlReader reader, MetadataResult<T> itemResult)
